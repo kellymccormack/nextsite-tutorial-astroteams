@@ -1,0 +1,36 @@
+.main {
+    margin-top: auto;
+    position: relative;
+  }
+  
+  .main-container {
+    width: 100vw;
+    height: 100vh;
+    background-image: var(--main-background-gradient);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+  .footer {
+    background-color: white;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .footer__label {
+    margin-left: var(--spacing-xs);
+  }
+  
+  .team-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .team-description__txt {
+    margin-bottom: var(--spacing-s);
+  }
