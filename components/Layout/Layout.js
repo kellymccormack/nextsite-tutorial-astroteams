@@ -1,5 +1,7 @@
 // Libs
+import PropTypes from "prop-types"
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 // Components
 import { FlexContainer, ORIENTATION } from "../FlexContainer";
@@ -11,6 +13,15 @@ import styles from "./Layout.module.css";
 import Image from "next/image";
 
 export function Layout({ children: pageContent }) {
+  const router = useRouter()
+  const isHomePage = router.pathname === "/"
+
+  const handleContactClick = (e) => {
+    debugger
+    e.preventDefault()
+    router.push("/contact")
+  }
+
     return <div className={styles["main-container"]}>
     <Head>
       <title>AstroTeams</title>
@@ -23,7 +34,7 @@ export function Layout({ children: pageContent }) {
         <ElevenLabsLogo />
         { pageContent }
       </FlexContainer>
-      <SpaceCraftButton>Contact</SpaceCraftButton>
+      { isHomePage && <SpaceCraftButton onClick={handleContactClick}>Contact</SpaceCraftButton> }
     </main>
 
     <footer className={styles.footer}>
@@ -38,4 +49,11 @@ export function Layout({ children: pageContent }) {
       <div className={styles["footer__label"]}>NextJS Demo App</div>
     </footer>
   </div>
+}
+
+Layout.propTypes = {
+  /**
+   * Page content
+  */
+  children: PropTypes.node.isRequired,
 }

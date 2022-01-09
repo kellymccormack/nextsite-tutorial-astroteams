@@ -5,11 +5,11 @@ import classnames from "classnames"
 // CSS Module
 import styles from "./SpaceCraftButton.module.css"
 
-export function SpaceCraftButton({ className, children: buttonContent }) {
+export function SpaceCraftButton({ className, children: buttonContent, onClick = () => {} }) {
     const rootClassName = classnames(styles["button-upload"], className)
 
     return <>
-        <button className={rootClassName}>
+        <button className={rootClassName} onClick={onClick}>
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="36.089"
@@ -64,5 +64,10 @@ SpaceCraftButton.propTypes = {
     /**
      * Additionnal class name
      */
-    className: PropTypes.string
+    className: PropTypes.string,
+
+    /**
+     * Button onCLick handler
+     */
+    onClick: PropTypes.func
 }
