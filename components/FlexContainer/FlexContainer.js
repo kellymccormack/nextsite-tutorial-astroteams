@@ -10,8 +10,8 @@ export const ORIENTATION = {
     VERTICAL: "container--vertical",
 }
 
-export function FlexContainer({ children, orientation=ORIENTATION.HORIZONTAL }) {
-    const rootClassName = classnames(styles.container, styles[orientation]);
+export function FlexContainer({ children, className, orientation=ORIENTATION.HORIZONTAL }) {
+    const rootClassName = classnames(styles.container, styles[orientation], className);
 
     return <div className={rootClassName}>
         {children}
@@ -23,6 +23,11 @@ FlexContainer.propTypes = {
      * Children JSX Elements
      */
     children: PropTypes.node.isRequired,
+
+    /**
+     * Additionnal class names
+     */
+    className: PropTypes.string,
 
     /**
      * Flex orientation (row or column)
