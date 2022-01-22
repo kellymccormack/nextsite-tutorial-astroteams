@@ -17,7 +17,6 @@ export function Layout({ children: pageContent }) {
   const isHomePage = router.pathname === "/"
 
   const handleContactClick = (e) => {
-    debugger
     e.preventDefault()
     router.push("/contact")
   }

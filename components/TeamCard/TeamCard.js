@@ -12,7 +12,14 @@ import { Section } from "./Section"
 // CSS Module
 import styles from "./TeamCard.module.css"
 
-export function TeamCard({ teamDescription, teamImagePath, teamName, teamPlanetPath }) {
+const TEAM_LABELS = {
+    "Schizo Cats": "Cats",
+    "Duck Invaders": "Ducks",
+    "Donut Factory": "Pandas",
+    "Raccoons of Asgard": "Racoons",
+}
+
+export function TeamCard({ teamCounter, teamDescription, teamImagePath, teamName, teamPlanetPath, teamPosition }) {
     const rootClassName = classnames(styles.container, "flexbox--space-around")
 
     return <PageCard className={rootClassName}>
@@ -47,13 +54,18 @@ export function TeamCard({ teamDescription, teamImagePath, teamName, teamPlanetP
         </FlexContainer>
         <Hr />
         <FlexContainer className="full-width flexbox--space-between">
-            <Section className={classnames(styles["section--align-center"], styles["section__size"])} title="Cats">25</Section>
-            <Section className={classnames(styles["section--align-center"], styles["section__position"])} title="Current Position">3rd</Section>
+            <Section className={classnames(styles["section--align-center"], styles["section__size"])} title={TEAM_LABELS[teamName]}>{teamCounter}</Section>
+            <Section className={classnames(styles["section--align-center"], styles["section__position"])} title="Current Position">{teamPosition}</Section>
         </FlexContainer>
     </PageCard>
 }
 
 TeamCard.propTypes = {
+    /**
+     * Team members counter
+     */
+    teamCounter: PropTypes.number.isRequired,
+
     /**
      * Team phrase description
      */
@@ -72,5 +84,10 @@ TeamCard.propTypes = {
     /**
      * Planet image path
      */
-    teamPlanetPath: PropTypes.string.isRequired
+    teamPlanetPath: PropTypes.string.isRequired,
+
+    /**
+     * Team position in season board
+     */
+    teamPosition: PropTypes.string.isRequired
 }

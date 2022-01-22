@@ -5,10 +5,10 @@ import classnames from "classnames"
 // CSS Module
 import styles from "./Button.module.css"
 
-export function Button({ children: buttonContent, className }) {
+export function Button({ children: buttonContent, className, onClick=() => {} }) {
     const rootClassName = classnames(styles.button, className)
 
-    return <button className={rootClassName}>{ buttonContent }</button>
+    return <button className={rootClassName} onClick={onClick}>{ buttonContent }</button>
 }
 
 Button.propTypes = {
